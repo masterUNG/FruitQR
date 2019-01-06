@@ -124,6 +124,9 @@ public class RegisterFragment extends Fragment {
 
         }
 
+        
+
+
     }
 
     //สร้างปุ่ม เมณู
