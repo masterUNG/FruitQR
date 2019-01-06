@@ -76,7 +76,6 @@ public class RegisterFragment extends Fragment {
 
     }//Main Method
 
-
     //คลิกรูป itemUpload
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -120,7 +119,22 @@ public class RegisterFragment extends Fragment {
         }else{
 
 //            Upload to Server
+            try {
 
+                MyConstant myConstant = new MyConstant();
+                AddUserThread addUserThread = new AddUserThread(getActivity());
+                addUserThread.execute(name, surname, address, phone, user, password, typeString, myConstant.getUrlAddUser());
+
+                if (Boolean.parseBoolean(addUserThread.get())) {
+                    getActivity().getSupportFragmentManager().popBackStack();
+                } else {
+                    myAlertDialog.normalDialog("Cannot Upload", "Please Try Again");
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
 
